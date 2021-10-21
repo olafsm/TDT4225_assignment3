@@ -3,3 +3,4 @@ venv/
 .DS_STORE
 dataset/
 __pycache__/
+Data/
