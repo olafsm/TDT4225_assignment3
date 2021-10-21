@@ -21,7 +21,7 @@ class ExampleProgram:
                 "courses": 
                     [
                     {'code':'TDT4225', 'name': ' Very Large, Distributed Data Volumes'},
-                    {'code':'BOI1001', 'name': ' How to become a boi or boierinnaa'}
+                    {'code':'OI1001', 'name': ' How to become a boi or boierinnaa'}
                     ] 
             },
             {
