@@ -34,8 +34,8 @@ def get_data_from_plt(file_path):
     :param file_path:
     :return: Pandas dataframe containing the data of the given file path
     """
-    plt_column_names = ["lat", "lon", "altitude", "date_days", "date", "time"]
-    column_numbers = [0, 1, 3, 4, 5, 6]
+    plt_column_names = ["lat", "lon", "altitude", "date", "time"]
+    column_numbers = [0, 1, 3, 5, 6]
     return pd.read_csv(file_path,
                        skiprows=6,
                        names=plt_column_names,
@@ -95,9 +95,10 @@ def walk_dataset():
         if last_3_chars_of_root.isdigit():
             labels = None
             user_id = last_3_chars_of_root
-            insert_user(user_id)
+            user = {"_id": last_3_chars_of_root, "has_labels": False, "Activities": []}
             if user_id in labeled_ids:
                 labels = get_label_match(user_id)
+                user["has_labels"] = True
 
         for file in files:
             label = " "
@@ -118,10 +119,10 @@ def walk_dataset():
                 except KeyError:
                     label = " "
             activity_id = db.insert_activity(user_id, label, first_timestamp, last_timestamp)
-            df['activity_id'] = activity_id
             df["date_time"] = df["date"] + " " + df["time"]
             del df["date"]
             del df["time"]
+            db.insert_activity(user_id, label, first_timestamp, last_timestamp, df)
             db.insert_trackpoints(df)
 
 
