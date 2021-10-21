@@ -14,6 +14,30 @@ class ExampleProgram:
         print('Created collection: ', collection)
 
     def insert_documents(self, collection_name):
+        Users = [
+            {
+            "_id": 1,
+            "has_labels": True,
+            "Activityies": [
+                {"ActivityID":  '001'},
+                {"ActivityID":  '002'},
+                {"ActivityID":  '003'},
+            ]
+            }
+        ]
+        Activities = [
+            {
+                "_id": 1,
+                "Transportation:mode": "Walk",
+                "start_date_time": "2020-12-12 00:00:00",
+                "end_date_time": "2020-1212 00:00:05",
+                "Trackpoints": [
+                    {"_id": 1, "lat":25.222, "lon": 26.111, "alt":777, "date_time": "2020-12-12 00:00:00"}
+                    {"_id": 1, "lat": 25.222, "lon": 26.111, "alt": 777, "date_time": "2020-12-12 00:00:00"}
+                    {"_id": 1, "lat": 25.222, "lon": 26.111, "alt": 777, "date_time": "2020-12-12 00:00:00"}
+                ]
+            }
+        ]
         docs = [
             {
                 "_id": 1,
